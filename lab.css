@@ -1,0 +1,124 @@
+/* Lab-only styles: the switcher bar, plus pieces shared by the "wow" options.
+   Nothing here exists on the live site. */
+
+/* The amber frame inside the hero would sit on top of our cards. */
+.visual-panel::after {
+  display: none;
+}
+
+/* ---------- shared stage for options A and C ---------- */
+.lab-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  isolation: isolate;
+}
+
+.lab-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--hero, none) 75% 38% / cover;
+  filter: brightness(0.62) saturate(1.1);
+}
+
+.glass-card {
+  width: min(100%, 560px);
+  padding: 20px;
+  color: #fff;
+  background: rgba(9, 11, 18, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+
+.board-tag {
+  margin-left: auto;
+  padding: 3px 9px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f2c27a;
+  border: 1px solid rgba(242, 194, 122, 0.5);
+}
+
+.board-note {
+  margin-top: 12px;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- switcher bar ---------- */
+.lab-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: calc(100% - 20px);
+  padding: 6px;
+  transform: translateX(-50%);
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  color: #fff;
+  background: rgba(9, 11, 18, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  overflow-x: auto;
+}
+
+.lab-bar .lab-label {
+  padding: 0 10px 0 8px;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f2c27a;
+  white-space: nowrap;
+}
+
+.lab-bar a {
+  padding: 7px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.lab-bar a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lab-bar a[aria-current="page"] {
+  opacity: 1;
+  color: #090b12;
+  font-weight: 700;
+  background: #f2c27a;
+}
+
+@media (max-width: 620px) {
+  .lab-bar .lab-label {
+    display: none;
+  }
+
+  /* Phones have little room: give the cards more of it. */
+  .lab-stage {
+    padding: 8px;
+  }
+
+  .glass-card {
+    padding: 14px;
+  }
+}
+
+@media print {
+  .lab-bar {
+    display: none;
+  }
+}

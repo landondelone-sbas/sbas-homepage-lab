@@ -1,0 +1,175 @@
+/* Option A: "Watch an agent work". A task board that clears itself. */
+
+.agent-board {
+  display: block;
+}
+
+.board-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  animation: live-pulse 1.8s infinite;
+}
+
+@keyframes live-pulse {
+  70% {
+    box-shadow: 0 0 0 9px rgba(74, 222, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+.board-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.board-col h3 {
+  margin-bottom: 9px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.board-col ul {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-height: 292px;
+  list-style: none;
+}
+
+.task {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 10px 11px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, opacity 0.4s ease;
+}
+
+.task.working {
+  transform: scale(1.03);
+  background: rgba(242, 194, 122, 0.2);
+  border-color: #f2c27a;
+}
+
+.task.done {
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.42);
+  animation: task-in 0.45s ease;
+}
+
+.task.done::before {
+  content: "\2713";
+  flex-shrink: 0;
+  font-weight: 800;
+  color: #4ade80;
+}
+
+.task.leaving {
+  opacity: 0;
+}
+
+@keyframes task-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.board-foot {
+  display: flex;
+  gap: 28px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.board-foot strong {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: #f2c27a;
+}
+
+.board-foot span {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 620px) {
+  /* One column: the next two waiting tasks on top, finished ones below as single lines. */
+  .board-cols {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .board-col ul {
+    min-height: 0;
+    gap: 6px;
+  }
+
+  #todo {
+    min-height: 98px;
+  }
+
+  #todo .task:nth-child(n + 3) {
+    display: none;
+  }
+
+  .task {
+    display: block;
+    padding: 9px 10px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .task.done::before {
+    margin-right: 8px;
+  }
+
+  #done {
+    min-height: 232px;
+  }
+
+  .board-foot {
+    gap: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot,
+  .task.done {
+    animation: none;
+  }
+
+  .task {
+    transition: none;
+  }
+}

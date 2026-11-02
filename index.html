@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Homepage Lab | SBAS.info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+    <link rel="stylesheet" href="lab.css" />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", sans-serif;
+        color: #fff;
+        background: #0d111c;
+      }
+
+      main {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 110px;
+      }
+
+      .brand {
+        height: 38px;
+      }
+
+      h1 {
+        margin: 28px 0 8px;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 1.05;
+      }
+
+      .lede {
+        max-width: 640px;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .safe {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 7px 12px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #4ade80;
+        border: 1px solid rgba(74, 222, 128, 0.45);
+        background: rgba(74, 222, 128, 0.08);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 34px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: #f2c27a;
+      }
+
+      .card .tag {
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #f2c27a;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        line-height: 1.1;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .card .go {
+        margin-top: auto;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #f2c27a;
+      }
+
+      .tips {
+        margin-top: 34px;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .tips code {
+        padding: 1px 6px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img class="brand" src="assets/logo-full-white.png" alt="SBAS.info" />
+      <h1>Homepage Lab</h1>
+      <p class="lede">
+        A private test copy of the homepage for trying out a "wow" moment. Each option swaps only the
+        picture on the right of the top section. Everything else is the same as today's page.
+      </p>
+      <span class="safe">The live website is untouched. This folder is not connected to it.</span>
+
+      <div class="grid">
+        <a class="card" href="baseline.html">
+          <span class="tag">Today</span>
+          <h2>Baseline</h2>
+          <p>An exact copy of the current homepage, for comparison.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="card" href="option-a.html">
+          <span class="tag">Option A</span>
+          <h2>Watch an agent work</h2>
+          <p>A task board clears itself while the "time handed back" counter climbs.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="card" href="option-b.html">
+          <span class="tag">Option B</span>
+          <h2>Work flows in, gets handled</h2>
+          <p>Streams of work flow into the SBAS mark and finished work slides out. Hover Book Discovery Call and the points morph into the robot.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+        <a class="card" href="option-c.html">
+          <span class="tag">Option C</span>
+          <h2>Meet Sebastian</h2>
+          <p>A glowing voice orb that pulses like someone speaking, with his opening lines fading in. Nothing about how calls work.</p>
+          <span class="go">Open &rarr;</span>
+        </a>
+      </div>
+
+      <p class="tips">
+        Tips: press <code>1</code> to <code>4</code> to switch pages. Add <code>?clean</code> to the end of a
+        page's address to hide the switcher bar for screenshots. Earlier ideas are kept in the <code>archive</code> folder.
+      </p>
+    </main>
+    <script src="lab.js"></script>
+  </body>
+</html>
