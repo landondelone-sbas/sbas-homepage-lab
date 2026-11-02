@@ -129,3 +129,57 @@
     display: none;
   }
 }
+
+/* ---------- the pointing robot beside the headline (options A, B and C) ---------- */
+/* Lets the robot stand above the amber panel next to it, instead of being clipped. */
+.content-panel {
+  position: relative;
+  z-index: 2;
+}
+
+/* Everything below is measured in headline-text sizes, so it scales with the screen. */
+.hero-headline {
+  --h1: clamp(3.2rem, 6vw, 7rem);
+  position: relative;
+}
+
+.hero-robot {
+  position: absolute;
+  right: calc(var(--h1) * -0.9);
+  bottom: calc(var(--h1) * -0.1);
+  width: calc(var(--h1) * 2.3);
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 18px rgba(0, 0, 0, 0.26));
+  animation: robot-float 5.5s ease-in-out infinite;
+}
+
+@keyframes robot-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-1.5deg);
+  }
+}
+
+@media (max-width: 960px) {
+  /* Stacked layout: no amber panel beside it, so keep the robot beside the words
+     instead of at the far edge of a wide screen. */
+  .hero-headline {
+    width: min(100%, calc(var(--h1) * 5.9));
+  }
+
+  .hero-robot {
+    right: 0;
+    width: calc(var(--h1) * 2.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-robot {
+    animation: none;
+  }
+}
