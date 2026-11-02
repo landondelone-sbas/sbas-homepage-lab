@@ -72,6 +72,11 @@
   border-radius: 999px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.lab-bar::-webkit-scrollbar {
+  display: none;
 }
 
 .lab-bar .lab-label {
@@ -84,6 +89,8 @@
 }
 
 .lab-bar a {
+  color: inherit;
+  text-decoration: none;
   padding: 7px 12px;
   border-radius: 999px;
   white-space: nowrap;
